@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>周报列表</title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<!--App自定义的css-->
+		<link href="css/app.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<link href="css/mui.picker.css" rel="stylesheet" />
+		<link href="css/mui.poppicker.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">周报列表</h1>
+		</header>
+		<br>
+		<div class="mui-content">
+			<div class="mui-content-padded">
+				<h5 class="mui-content-padded">选择项目</h5>
+				<button id="projectPicker" class="mui-btn mui-btn-block" type="button">选择项目...</button>
+				
+				<div id="weekly-list">
+					<h5 class="mui-content-padded">选择周报</h5>
+					<div class="weekly-line">
+						<button class="mui-btn mui-btn-block weekly-item" type="button">CW21-项目X</button>
+						<button class="mui-btn mui-btn-block weekly-item" type="button">CW22-项目X</button>
+						<button class="mui-btn mui-btn-block weekly-item" type="button">CW23-项目X</button>
+						<button class="mui-btn mui-btn-block weekly-item" type="button">CW24-项目X</button>
+						<button class="mui-btn mui-btn-block weekly-item" type="button">CW25-项目X</button>	
+					</div>
+					<br>
+					<button class="mui-btn mui-btn-block" type="button" id="addNewWeekly">+</button>
+					<button class="mui-btn mui-btn-block weekly-item" type="button" id="dummyLine" style="display: none;"></button>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.picker.js"></script>
+		<script src="js/mui.poppicker.js"></script>
+		
+		<script src="js/jquery-1.11.3.js"></script>
+		<script>
+			$.noConflict();
+		</script>
+		
+		<script>
+			(function($, doc) {
+				$.init();
+				$.ready(function() {
+					//普通示例
+					var userPicker = new $.PopPicker();
+					userPicker.setData([{
+						value: '项目A',
+						text: '项目A'
+					}, {
+						value: '项目B',
+						text: '项目B'
+					}, {
+						value: '项目C',
+						text: '项目C'
+					}, {
+						value: '项目D',
+						text: '项目D'
+					}]);
+					var projectPickerButton = doc.getElementById('projectPicker');
+					projectPickerButton.addEventListener('tap', function(event) {
+						userPicker.show(function(items) {
+							jQuery(projectPickerButton).text(items[0].text);
+						});
+					}, false);
+				});
+			})(mui, document);
+		
+		</script>
+		
+		<script>
+			jQuery(document).ready(function($) {
+				$('#addNewWeekly').click(function() {
+					alert('添加新周报');
+				});
+			});
+		</script>
+
+	</body>
+
+</html>
