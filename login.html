@@ -115,7 +115,7 @@
 			</form>
 			<div class="mui-content-padded">
 				<button id='login' class="mui-btn mui-btn-block mui-btn-primary">登录</button>
-				<div class="link-area" style="display: none;">
+				<div class="link-area">
 					<a id='reg'>注册账号</a> <span class="spliter">|</span>
 					<a id='forgetPassword'>忘记密码</a>
 				</div>
@@ -307,6 +307,25 @@
 					};
 				});
 			}(mui, document));
+		</script>
+		
+		<script>
+			$(function(){
+				$("#login").click(function(){
+					var a = $("#account").val();
+					var b = $("#password").val();
+					if (!a || !b) {
+						mui.alert('输入账号密码后登录','BOE');
+						return;
+					}
+					if (a != b) {
+						mui.alert('账号密码不匹配','BOE');
+						rerturn;
+					}
+					mui.toast('登录成功');
+					location.href = 'weeklyList.html';
+				});
+			});
 		</script>
 	</body>
 
